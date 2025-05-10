@@ -2,8 +2,9 @@ import './style.css'
 import './script.js'
 import gsap from 'gsap'
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrambleTextPlugin)
+gsap.registerPlugin(ScrambleTextPlugin, ScrollTrigger)
 
 const defaultChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&?@'
 
@@ -11,10 +12,10 @@ function createNav() {
   const app = document.querySelector('#app')
   app.innerHTML = `
     <nav>
-      <div class="nav-items" aria-hidden="true">
-        <a class="logo-link" target="_blank" href="#home">s/s</a>
+      <div class="nav-items"
+        <a class="nav-item" target="_blank" href="#home">s/s</a>
       </div>
-      <div class="nav-items" aria-hidden="true">
+      <div class="nav-items">
         <a class="nav-item" href="#about">about</a>
         <a class="nav-item" href="#works">works</a>
         <a class="nav-item" href="#contact">contact</a>
@@ -23,52 +24,59 @@ function createNav() {
   `
 }
 
-function createContent() {
-  const content = document.createElement('div');
-  content.className = 'content';
-  content.style.position = 'relative';
-  content.style.marginTop = `${window.innerHeight}px`;
-  content.innerHTML = `
+function createHero() {
+  const hero = document.createElement('div')
+  hero.className = 'content'
+  hero.style.position = 'relative'
+  hero.style.marginTop = '0'
+  hero.innerHTML = `
     <div class="hero-overlay">
       <div class="hero-container">
         <span>i am</span>
         <p class="hero-text">steph</p>
         <p class="subtitle">// creative developer //</p>
       </div>
+        <div class="scroll-indicator">
+        <p class="vertical">scroll</p>
+        </div>
     </div>
+  `
+  document.body.appendChild(hero)
+}
+
+function createAboutSection() {
+  const about = document.createElement('section');
+  about.id = 'about';
+  about.className = 'about-section';
+  about.innerHTML = `
+    <h1>About Me</h1>
+    <p>
+      Hello, I'm Steph. I'm a creative developer with a passion for taking complex ideas and turning them into interactive, visually stunning web applications. I thrive at the intersection of design and technology, where I can create beautiful and functional experiences for the user. I have a healthy appetite for education in all forms, so I enjoy exploring new techniques to add to my skill set. I continue to pursue personal projects, which I find the easiest and most effective way to grow as a developer.
+    </p>
   `;
-  document.querySelector('#main').appendChild(content)
+  document.body.appendChild(about);
 }
 
-function createProjectsSection() {
-  const stream = document.createElement('div')
-  stream.className = 'projects-stream'
-
-  for (let i = 0; i < 10; i++) {
-    const card = document.createElement('div')
-    card.className = 'project-card'
-    card.innerHTML = `
-      <div class="glitch-title">project ${i + 1}</div>
-      <p class="glitch-desc">// description of project ${i + 1}</p>
-    `;
-    stream.appendChild(card);
-  }
-  document.querySelector('#main').appendChild(stream)
+function createWorksSection() {
+  const works = document.createElement('section');
+  works.id = 'works';
+  works.className = 'works-section';
+  works.innerHTML = `
+    <h1>My Works</h1>
+    <p>Here is a showcase of my projects and creative work.</p>
+  `;
+  document.body.appendChild(works);
 }
 
-function animateProjectCards() {
-  gsap.utils.toArray('.project-card').forEach((card) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 85%',
-      },
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      ease: 'power2.out',
-    })
-  })
+function createContactSection() {
+  const contact = document.createElement('section');
+  contact.id = 'contact';
+  contact.className = 'contact-section';
+  contact.innerHTML = `
+    <h1>Contact Me</h1>
+    <p>Feel free to reach out to me for collaborations or inquiries.</p>
+  `;
+  document.body.appendChild(contact);
 }
 
 function setupScrambleLinks() {
@@ -113,10 +121,26 @@ function playSoundOnHover() {
   })
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
   createNav()
-  createContent()
+  createHero()
+  createAboutSection()
+  createWorksSection()
+  createContactSection()
   setupScrambleLinks()
   playSoundOnHover()
-  createProjectsSection()
+
+  gsap.to('.hero-overlay', {
+    opacity: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.about',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true
+    }
+  })
 })
+
+
