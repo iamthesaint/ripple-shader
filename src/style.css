@@ -163,16 +163,6 @@ span {
   }
 }
 
-.scroll-indicator {
-  position: absolute;
-  border-left: 1px solid #fef4b8;
-  height: 10em;
-  left: 5%;
-  margin-left: -3px;
-  bottom: 0;
-  animation: fade 5s ease-in-out;
-}
-
 .vertical {
   writing-mode: vertical-rl;
   font-family: Arial, Helvetica, sans-serif;
@@ -181,8 +171,17 @@ span {
   letter-spacing: 0.5em;
   font-size: clamp(0.5em, 0.8vw, 1em);
   text-transform: uppercase;
-  animation: fade 5s ease-in-out;
-  animation-delay: 0.5s;
+  animation: fade 4s ease-in;
+}
+
+.scroll-indicator {
+  position: absolute;
+  border-left: 1px solid #fef4b8;
+  height: 10em;
+  left: 5%;
+  margin-left: -3px;
+  bottom: 0;
+  animation: draw 2s ease-in;
 }
 
 @keyframes fade {
@@ -193,4 +192,26 @@ span {
     opacity: 1;
   }
 }
+
+@keyframes draw {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 10em;
+  }
+}
+
+.text {
+  color: #fef4b8;
+  font-size: clamp(0.7em, 1.5vw, 1em);
+  font-family: 'Arial', Helvetica, sans-serif;
+  font-weight: 100;
+  letter-spacing: 0.07em;
+  line-height: 1.5em;
+  padding: 5em;
+  margin: 2em;
+  text-align: left;
+}
+
 

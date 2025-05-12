@@ -18,48 +18,53 @@ varying vec2 vUv;
 const float delta = 1.4;
 
 void main() {
-vec2 uv = vUv;
-if (frame == 0) {
-gl_FragColor = vec4(0.0);
-return;
-}
+  vec2 uv = vUv;
 
-vec4 data = texture2D(textureA, uv);
-float pressure = data.x;
-float pVel = data.y;
+  if (frame == 0) {
+    gl_FragColor = vec4(0.0);
+    return;
+  }
 
-vec2 textelSize = 1.0 / resolution;
-float p_right = texture2D(textureA, uv + vec2(textelSize.x, 0.0)).x;
-float p_left = texture2D(textureA, uv - vec2(textelSize.x, 0.0)).x;
-float p_up = texture2D(textureA, uv + vec2(0.0, textelSize.y)).x;
-float p_down = texture2D(textureA, uv - vec2(0.0, textelSize.y)).x;
+  vec4 data = texture2D(textureA, uv);
+  float pressure = data.x;
+  float pVel = data.y;
 
-if (uv.x <= textelSize.x) p_left = p_right;
-if (uv.x >= 1.0 - textelSize.x) p_right = p_left;
-if (uv.y <= textelSize.y) p_down = p_up;
-if (uv.y >= 1.0 - textelSize.y) p_up = p_down;
+  vec2 texelSize = 1.0 / resolution;
 
-pVel += delta * (-2.0 * pressure + p_right + p_left) / 4.0;
-pVel += delta * (-2.0 * pressure + p_up + p_down) / 4.0;
+  vec2 uvRight = clamp(uv + vec2(texelSize.x, 0.0), 0.0, 1.0);
+  vec2 uvLeft  = clamp(uv - vec2(texelSize.x, 0.0), 0.0, 1.0);
+  vec2 uvUp    = clamp(uv + vec2(0.0, texelSize.y), 0.0, 1.0);
+  vec2 uvDown  = clamp(uv - vec2(0.0, texelSize.y), 0.0, 1.0);
 
-pressure += delta * pVel;
+  float p_right = texture2D(textureA, uvRight).x;
+  float p_left  = texture2D(textureA, uvLeft).x;
+  float p_up    = texture2D(textureA, uvUp).x;
+  float p_down  = texture2D(textureA, uvDown).x;
 
-pVel -= 0.003 * delta * pressure;
+  pVel += delta * (-2.0 * pressure + p_right + p_left) / 4.0;
+  pVel += delta * (-2.0 * pressure + p_up + p_down) / 4.0;
 
-pVel *= 1.0 - 0.002 * delta;
-pressure *= 0.999;
+  pressure += delta * pVel;
+  pVel -= 0.003 * delta * pressure;
+  pVel *= 1.0 - 0.002 * delta;
+  pressure *= 0.999;
 
-vec2 mouseUV = mouse / resolution;
-if (mouse.x > 0.0) {
-float dist = distance(uv, mouseUV);
-if (dist <= 0.02) {
-pressure += 2.0 * (1.0 - dist / 0.02);
+  vec2 mouseUV = mouse / resolution;
+  if (mouse.x > 0.0) {
+    float dist = distance(uv, mouseUV);
+    if (dist <= 0.02) {
+      pressure += 2.0 * (1.0 - dist / 0.02);
     }
-}
-    gl_FragColor = vec4(pressure, pVel,
+  }
+
+  gl_FragColor = vec4(
+    pressure,
+    pVel,
     (p_right - p_left) / 2.0,
-    (p_up - p_down) / 2.0);
+    (p_up - p_down) / 2.0
+  );
 }
+
     `;
 
 export const renderVertexShader = `
