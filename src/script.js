@@ -106,12 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
         resizeTimeout = setTimeout(handleResize, 100);
       });
 
-    renderer.domElement.addEventListener('mousemove', (event) => {
+      window.addEventListener('mousemove', (event) => {
         mouse.x = event.clientX * DPR
         mouse.y = (window.innerHeight - event.clientY) * DPR
     })
-
-    renderer.domElement.addEventListener('mouseleave', () => {
+    
+    window.addEventListener('mouseleave', () => {
         mouse.set(0, 0)
     })
 

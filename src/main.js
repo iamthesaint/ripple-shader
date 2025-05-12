@@ -7,6 +7,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
 gsap.registerPlugin(ScrambleTextPlugin, ScrollTrigger, ScrollToPlugin)
 
+
 const defaultChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&?@'
 
 function createNav() {
@@ -49,9 +50,9 @@ function createHero() {
 }
 
 function createAboutSection() {
-  const about = document.createElement('section');
-  about.id = 'about';
-  about.className = 'about';
+  const about = document.createElement('section')
+  about.id = 'about'
+  about.className = 'about'
   about.innerHTML = `
     <h1>About Me</h1>
     <p class="text">
@@ -60,37 +61,39 @@ function createAboutSection() {
       <br />
       I'm a creative developer who loves turning complex ideas into interactive, visually stunning web applications.
       <br />
-      I thrive at the intersection of design and technology, where I can build beautiful, yet seamlessly functional experiences for the user.
+      At the intersection of design and technology, I thrive building beautiful, yet seamlessly functional experiences for the user.
       <br />
-      I enjoy exploring new techniques to add to my skill set - personal projects are my favorite way to do this. I am currently specializing in building UI/UX with Three.js and WebGL using custom shaders and 3D models, but I have a vast subset of skills to apply to all forms of development.
+      My skill set is ever-evolving, and personal projects are my favorite way to grow as a developer.
+      <br />
+      I am currently specializing in building UI/UX with Three.js and WebGL using custom shaders and 3D models, but I have a vast subset of skills to apply to all forms of development.
       <br />
       I am excited for what the future holds for me.
     </p>
-  `;
-  document.body.appendChild(about);
+  `
+  document.body.appendChild(about)
 }
 
 function createWorksSection() {
-  const works = document.createElement('section');
-  works.id = 'works';
-  works.className = 'works-section';
+  const works = document.createElement('section')
+  works.id = 'works'
+  works.className = 'works-section'
   works.innerHTML = `
     <h1>My Works</h1>
     <p class="text">Here is a showcase of my projects and creative work.</p>
-  `;
-  document.body.appendChild(works);
+  `
+  document.body.appendChild(works)
 }
 
 function createContactSection() {
-  const contact = document.createElement('section');
-  contact.id = 'contact';
-  contact.className = 'contact-section';
+  const contact = document.createElement('section')
+  contact.id = 'contact'
+  contact.className = 'contact-section'
   contact.innerHTML = `
     <h1>contact</h1>
     <p class="text">let's work together.</p>
 
-  `;
-  document.body.appendChild(contact);
+  `
+  document.body.appendChild(contact)
 }
 
 function setupScrambleLinks() {
@@ -184,17 +187,17 @@ document.addEventListener('DOMContentLoaded', () => {
   playSoundOnNavJump()
   navLinkJump()
 
+
   gsap.to('.hero-overlay', {
     opacity: 0,
-    ease: 'none',
+    ease: 'power1.out',
     scrollTrigger: {
-      trigger: '.about',
-      start: 'top bottom',
-      end: 'top top',
-      scrub: true
+      trigger: '#home',
+      start: 'top top',
+      end: '+=50%',
+      scrub: true,
     }
   })
-
   const sections = document.querySelectorAll('.text')
   sections.forEach((section) => {
     gsap.from(section, {
@@ -210,5 +213,4 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 })
-
 

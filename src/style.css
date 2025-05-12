@@ -13,6 +13,7 @@ body, html {
   color: #fef4b8;
   overflow-y: auto;
   scroll-behavior: smooth;
+  background: transparent !important;
 }
 
 h1 {
@@ -36,14 +37,15 @@ nav {
 
 section {
   padding: 4em;
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: #000407;
   z-index: 2;
+  background-color: transparent;
 }
 
 .nav-items a {
@@ -65,21 +67,26 @@ section {
 }
 
 canvas {
-  display: block;
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 0;
+  pointer-events: auto;
 }
 
 .content {
-  margin-top: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  height: 100vh;
   z-index: 2;
   padding: 8em;
   text-align: center;
-  background-color: #000407;
+  background-color: transparent;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
 }
@@ -150,16 +157,16 @@ span {
 
 @keyframes flicker {
   0% {
-    opacity: 1;
-    text-shadow: #fef4b8 0px 0px;
+    opacity: 0.3;
+    text-shadow: #fef4b8 0px 0px 5px;
   }
   50% {
     opacity: 0.5;
-    text-shadow: #fef4b8 0px 0px 10px;
+    text-shadow: #fef4b8 0px 0px 5px;
   }
   100% {
     opacity: 1;
-    text-shadow: #fef4b8 0px 0px 20px;
+    text-shadow: #fef4b8 0px 0px 5px;
   }
 }
 
@@ -213,5 +220,3 @@ span {
   margin: 2em;
   text-align: left;
 }
-
-
