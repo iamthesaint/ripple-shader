@@ -8,6 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrambleTextPlugin, ScrollTrigger)
 let ambient = null
 let isMuted = localStorage.getItem('isMuted') === 'true' || false
+let heroFadeScrollTrigger
 
 const defaultChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&?@'
 
@@ -79,6 +80,21 @@ function createHero() {
     </div>
   `
   document.body.appendChild(hero)
+}
+
+
+function setupHeroScrollFade() {
+  heroFadeScrollTrigger = gsap.to('.hero-overlay', {
+    opacity: 0,
+    ease: 'power1.out',
+    scrollTrigger: {
+      id: 'heroFade',
+      trigger: '#home',
+      start: 'top top',
+      end: '+=50%',
+      scrub: true
+    }
+  })
 }
 
 function createAboutSection() {
@@ -251,7 +267,16 @@ function navLinkJump() {
       }
 
       if (targetId === 'home') {
-        gsap.to('.hero-overlay', { opacity: 1, duration: 0.8, ease: 'power1.out' })
+        heroFadeScrollTrigger?.scrollTrigger?.kill()
+
+        gsap.to('.hero-overlay', {
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power1.out',
+          onComplete: () => {
+            setupHeroScrollFade()
+          }
+        })
         ScrollTrigger.refresh()
       }
 
@@ -334,7 +359,6 @@ function showNavOnScroll() {
   })
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const scramSound = new Audio('/flip.wav')
   const navSound = new Audio('/nav.wav')
@@ -366,18 +390,9 @@ document.addEventListener('DOMContentLoaded', () => {
   ScrollTrigger.refresh()
 
   showNavOnScroll()
+  setupHeroScrollFade()
 
-  gsap.to('.hero-overlay', {
-    opacity: 0,
-    ease: 'power1.out',
-    scrollTrigger: {
-      trigger: '#home',
-      start: 'top top',
-      end: '+=50%',
-      scrub: true
-    }
   })
- })
 })
 
 
