@@ -103,7 +103,7 @@ function createAboutSection() {
   about.className = 'about'
   about.innerHTML = `
     <h1>bio</h1>
-    <p class="text">
+    <p class="text" style="text-align: center;">
       Hello, I'm Steph. 
       <br />
 \     <br />
