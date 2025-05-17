@@ -145,7 +145,7 @@ function createWorksSection() {
       marble game
       </a>
       <br />
-      a react three fiber interactive marble game that guides the user through an obstacle course using rapier physics.
+      a react three fiber interactive marble game that guides the user through an obstacle course using rapier physics built during Three.js Journey.
       <br />
       <br />
       <a href="https://r3f-portal-scene-omega.vercel.app/" target="_blank" class="project-link">
@@ -159,7 +159,7 @@ function createWorksSection() {
       ocean waves custom shader
       </a>
       <br />
-      a shader created with three.js and webgl to showcase the use of color and trigonometry, with a tool to adjust the variables.
+      a shader created with three.js and webgl to showcase the use of color and trigonometry, with a tool to adjust the variables. Built in Three.js Journey course.
       <br />
       <br />
       <a class="project-link">
