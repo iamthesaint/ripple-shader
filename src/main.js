@@ -141,13 +141,6 @@ function createWorksSection() {
       a custom shader built with 3js and webgl that gradually changes the cloudscape from sunny blue skies to a thunderstorm.
       <br />
       <br />
-      <a href="https://weather-dashboard-b6h3.onrender.com/" target="_blank" class="project-link">
-      weather app
-      </a>
-      <br />
-      a responsive weather app utilizing the openweathermap api to display the current and 5-day forecast for any city.
-      <br />
-      <br />
       <a href="https://marble-race-bice.vercel.app/" target="_blank" class="project-link">
       marble game
       </a>
