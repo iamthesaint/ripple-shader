@@ -167,6 +167,10 @@ function createWorksSection() {
       </a>
       <br />
       a custom shader based on the characteristics of water that follows the cursor, taking into account its speed and pressure.
+      <br />
+      <p class="text">
+      ...more projects coming soon
+      </p>
         `
   document.body.appendChild(works)
 }
