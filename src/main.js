@@ -195,6 +195,9 @@ function createContactSection() {
     <a href="https://www.instagram.com/iamthesaint/" class="icon">
     <img src="/ig.svg" alt="instagram" class="icon">
     </a>
+    <a href="https://drive.google.com/file/d/15RNjLZXmCrOIPWI2NvMTOfCMmzjPIKdW/view?usp=sharing" class="icon">
+    <img src="/cv.svg" alt="cv" class="icon">
+    </a>
     </div>
   `
   document.body.appendChild(contact)
