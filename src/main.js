@@ -152,7 +152,7 @@ function createWorksSection() {
       portal scene
       </a>
       <br />
-      a blender model imported into a three.js scene with a custom-written portal shader.
+      a blender model imported into a three.js scene with a custom-written portal shader for Three.js Journey.
       <br />
       <br />
       <a href="https://ocean-waves-shader.vercel.app/" target="_blank" class="project-link">
@@ -168,7 +168,21 @@ function createWorksSection() {
       <br />
       a custom shader based on the characteristics of water that follows the cursor, taking into account its speed and pressure.
       <br />
-      <p class="text">
+      <br />
+      <a href="https://drive.google.com/file/d/14vvZvI6X_XuW56_AdUNzxYimx6lilbkO/view?usp=sharing" target="_blank" class="project-link">
+      snowman blender model (texture study)
+      </a>
+      <br />
+      a snowman model made in blender to study the creation of various textures and materials using geometry nodes during a Ryan King Art course.
+      <br />
+      <br />
+      <a href="https://drive.google.com/file/d/1IKaFk0sroN4rftFAgi09vD9Pw0C82dQ6/view?usp=sharing" target="_blank" class="project-link">
+      the obligatory blender donut
+      </a>
+      <br />
+      a realistic donut model designed during a blender guru basics course.
+      <br />
+      <br />
       ...more projects coming soon
       </p>
         `
