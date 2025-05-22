@@ -141,13 +141,6 @@ function createWorksSection() {
       a custom shader built with 3js and webgl that gradually changes the cloudscape from sunny blue skies to a thunderstorm.
       <br />
       <br />
-      <a href="https://marble-race-bice.vercel.app/" target="_blank" class="project-link">
-      marble game
-      </a>
-      <br />
-      a react three fiber interactive marble game that guides the user through an obstacle course using rapier physics built during Three.js Journey.
-      <br />
-      <br />
       <a href="https://r3f-portal-scene-omega.vercel.app/" target="_blank" class="project-link">
       portal scene
       </a>
