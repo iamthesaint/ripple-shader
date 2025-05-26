@@ -98,13 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
         drawTextToCanvas(w, h);
       }
     
-      handleResize();
+      handleResize()
     
-      let resizeTimeout;
+      let resizeTimeout
       window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(handleResize, 100);
-      });
+        clearTimeout(resizeTimeout)
+        resizeTimeout = setTimeout(handleResize, 100)
+      })
 
       window.addEventListener('mousemove', (event) => {
         mouse.x = event.clientX * DPR

@@ -12,6 +12,8 @@ let heroFadeScrollTrigger
 
 const defaultChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&?@'
 
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+
 function createNav() {
   const app = document.querySelector('#app')
   app.innerHTML = `
@@ -28,25 +30,12 @@ function createNav() {
 `
 }
 
-// function showNavOnScroll() {
-//   const nav = document.querySelector('nav')
-//   gsap.to(nav, {
-//     opacity: 1,
-//     duration: 0.5,
-//     ease: 'power1.out',
-//     scrollTrigger: {
-//       trigger: '#about',
-//       start: 'top center',
-//       toggleClass: { targets: 'nav', className: 'visible' },
-//     }
-//   })
-// }
-
 function createMuteButton() {
+  if (isMobile) return
+
   const muteButton = document.createElement('button')
   muteButton.id = 'mute-button'
   muteButton.innerText = isMuted ? 'sound on' : 'sound off'
-
 
   document.body.appendChild(muteButton)
   muteButton.addEventListener('click', () => {
@@ -91,7 +80,7 @@ function setupHeroScrollFade() {
       id: 'heroFade',
       trigger: '#home',
       start: 'top top',
-      end: '+=50%',
+      end: '+=100%',
       scrub: true
     }
   })
@@ -134,21 +123,21 @@ function createWorksSection() {
     <h1>projects</h1>
     <div class="projects">
       <p class="text">
-      <a href="https://cloud-nvra5k0nd-stephenie-sainthilaires-projects.vercel.app/" target="_blank" class="project-link">
+      <a href="https://cloud-nvra5k0nd-stephenie-sainthilaires-projects.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
       custom cloudscape shader
       </a>
       <br />
       a custom shader built with 3js and webgl that gradually changes the cloudscape from sunny blue skies to a thunderstorm.
       <br />
       <br />
-      <a href="https://r3f-portal-scene-omega.vercel.app/" target="_blank" class="project-link">
+      <a href="https://r3f-portal-scene-omega.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
       portal scene
       </a>
       <br />
       a blender model imported into a three.js scene with a custom-written portal shader for Three.js Journey.
       <br />
       <br />
-      <a href="https://ocean-waves-shader.vercel.app/" target="_blank" class="project-link">
+      <a href="https://ocean-waves-shader.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
       ocean waves custom shader
       </a>
       <br />
@@ -162,14 +151,14 @@ function createWorksSection() {
       a custom shader based on the characteristics of water that follows the cursor, taking into account its speed and pressure.
       <br />
       <br />
-      <a href="https://drive.google.com/file/d/14vvZvI6X_XuW56_AdUNzxYimx6lilbkO/view?usp=sharing" target="_blank" class="project-link">
+      <a href="https://drive.google.com/file/d/14vvZvI6X_XuW56_AdUNzxYimx6lilbkO/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="project-link">
       snowman blender model (texture study)
       </a>
       <br />
       a snowman model made in blender to study the creation of various textures and materials using geometry nodes during a Ryan King Art course.
       <br />
       <br />
-      <a href="https://drive.google.com/file/d/1IKaFk0sroN4rftFAgi09vD9Pw0C82dQ6/view?usp=sharing" target="_blank" class="project-link">
+      <a href="https://drive.google.com/file/d/1IKaFk0sroN4rftFAgi09vD9Pw0C82dQ6/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="project-link">
       the obligatory blender donut
       </a>
       <br />
@@ -321,6 +310,8 @@ function createOverlayForAudio(onUnlock) {
 }
 
 function playLoop(audioFile, fadeIn = 2) {
+  if (isMobile) return {
+    stop: () => {}, audio: null }
   const audioContext = new (window.AudioContext || window.AudioContext)()
   const gainNode = audioContext.createGain()
   const audio = new Audio(audioFile)
@@ -400,6 +391,10 @@ document.addEventListener('DOMContentLoaded', () => {
   setupHeroScrollFade()
 
   })
+})
+
+window.addEventListener('load', () => {
+  ScrollTrigger.refresh()
 })
 
 
