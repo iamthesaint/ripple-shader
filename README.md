@@ -1,3 +1,9 @@
+# Personal Portfolio
+
+## *Description*
+
+My web portfolio coded with custom shader background in GLSL to mimic water manipulation as the user guides the cursor. The page goes on to highlight projects that I have completed/contributed to/worked on in both an educational and personal setting. This portfolio intends to showcase unique and challenging techniques I have studied in a clean, professional way.
+
 ## *Tech Stack* 
 
 - **Three.js** — WebGL renderer for visual effects
