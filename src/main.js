@@ -123,7 +123,7 @@ function createWorksSection() {
     <h1>projects</h1>
     <div class="projects">
       <p class="text">
-      <a href="https://cloud-nvra5k0nd-stephenie-sainthilaires-projects.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+      <a href="https://cloud-orpin-nine.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
       custom cloudscape shader
       </a>
       <br />
