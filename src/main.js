@@ -141,7 +141,7 @@ function createWorksSection() {
       ocean waves custom shader
       </a>
       <br />
-      a shader created with Three.js and WebGL to showcase the use of color and trigonometry, with a tool to adjust the variables. Shader was built as a study of reflection on a moving plane. Built in Three.js Journey course.
+      a shader created with Three.js and WebGL to showcase the use of color and trigonometry. Shader was built as a study of reflection on a moving plane. Built in Three.js Journey course.
       <br />
       <br />
       <a class="project-link">
