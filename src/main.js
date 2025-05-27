@@ -55,7 +55,6 @@ function createHero() {
   hero.style.position = 'relative'
   hero.style.marginTop = '0'
   hero.innerHTML = `
-  <div id="home">
     <div class="hero-overlay">
       <div class="hero-container">
         <span>i am</span>
@@ -65,7 +64,6 @@ function createHero() {
         <div class="scroll-indicator">
         <p class="vertical">scroll</p>
         </div>
-      </div>
     </div>
   `
   document.body.appendChild(hero)
@@ -73,15 +71,36 @@ function createHero() {
 
 
 function setupHeroScrollFade() {
-  heroFadeScrollTrigger = gsap.to('.hero-overlay', {
-    opacity: 0,
-    ease: 'power1.out',
-    scrollTrigger: {
-      id: 'heroFade',
-      trigger: '#home',
-      start: 'top top',
-      end: '+=100%',
-      scrub: true
+  if (heroFadeScrollTrigger) heroFadeScrollTrigger.kill()
+
+  ScrollTrigger.matchMedia({
+    '(max-width: 768px)': () => {
+      heroFadeScrollTrigger = gsap.to('.hero-overlay', {
+        opacity: 0,
+        pointerEvents: 'none',
+        ease: 'power1.out',
+        scrollTrigger: {
+          id: 'heroFadeMobile',
+          trigger: '#about',
+          start: 'top center',
+          end: 'bottom top',
+          scrub: true,
+        }
+      })
+    },
+
+    '(min-width: 769px)': () => {
+      heroFadeScrollTrigger = gsap.to('.hero-overlay', {
+        opacity: 0,
+        ease: 'power1.out',
+        scrollTrigger: {
+          id: 'heroFade',
+          trigger: '#home',
+          start: 'top top',
+          end: '+=100%',
+          scrub: true
+        }
+      })
     }
   })
 }
