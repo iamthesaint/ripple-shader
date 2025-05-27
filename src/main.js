@@ -71,25 +71,7 @@ function createHero() {
 
 
 function setupHeroScrollFade() {
-  if (heroFadeScrollTrigger) heroFadeScrollTrigger.kill()
 
-  ScrollTrigger.matchMedia({
-    '(max-width: 768px)': () => {
-      heroFadeScrollTrigger = gsap.to('.hero-overlay', {
-        opacity: 0,
-        pointerEvents: 'none',
-        ease: 'power1.out',
-        scrollTrigger: {
-          id: 'heroFadeMobile',
-          trigger: '#about',
-          start: 'top center',
-          end: 'bottom top',
-          scrub: true,
-        }
-      })
-    },
-
-    '(min-width: 769px)': () => {
       heroFadeScrollTrigger = gsap.to('.hero-overlay', {
         opacity: 0,
         ease: 'power1.out',
@@ -102,8 +84,6 @@ function setupHeroScrollFade() {
         }
       })
     }
-  })
-}
 
 function createAboutSection() {
   const about = document.createElement('section')
