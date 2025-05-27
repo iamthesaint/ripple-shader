@@ -130,11 +130,11 @@ function createWorksSection() {
       a custom shader built with 3js and webgl that gradually changes the cloudscape from sunny blue skies to a thunderstorm.
       <br />
       <br />
-      <a href="https://r3f-portal-scene-omega.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+      <a href="https://portal-scene-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
       portal scene
       </a>
       <br />
-      a blender model imported into a three.js scene with a custom-written portal shader for Three.js Journey.
+      a model built by me in Blender, imported into a Three.js scene with a custom portal shader for the Three.js Journey course. Later, refactored to use React Three Fiber (see separate GitHub repo).
       <br />
       <br />
       <a href="https://ocean-waves-shader.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
