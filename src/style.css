@@ -354,3 +354,8 @@ span {
   pointer-events: auto;
 }
 
+@media (max-width: 768px) {
+  section {
+    background: #000 !important;
+  }
+}
